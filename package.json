@@ -1,0 +1,29 @@
+{
+  "name": "cursopracticojavascript-platzi",
+  "version": "1.0.0",
+  "description": "Agrupa los ejercicios vistos en el curso en una pagina web utilizando Tailwind para la interfaz",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production npx tailwindcss -i ./src/tailwind.css -o ./public/css/styles.css",
+    "tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css",
+    "watch": "npx tailwindcss -i ./src/tailwind.css  -o ./public/css/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllanDev15/CursoPracticoJavascript-Platzi.git"
+  },
+  "keywords": [],
+  "author": "Allan Atzin Flores De la Serna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllanDev15/CursoPracticoJavascript-Platzi/issues"
+  },
+  "homepage": "https://github.com/AllanDev15/CursoPracticoJavascript-Platzi#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.2",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7",
+    "win-node-env": "^0.4.0"
+  },
+  "dependencies": {}
+}
