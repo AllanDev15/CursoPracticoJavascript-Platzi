@@ -26,20 +26,7 @@ input {
 }
 
 @layer utilities {
-  /* .triangle:after {
-    content: '';
-    position: relative;
-    bottom: 12px;
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 3.5rem solid #6366f1;
-  } */
   .triangle {
-    /* width: 3.5rem;
-    height: 3.5rem;
-    background-color: #6366f1; */
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
   }
 }

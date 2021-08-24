@@ -658,8 +658,8 @@ video {
   grid-column: span 2 / span 2;
 }
 
-.mr-8 {
-  margin-right: 2rem;
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .mt-14 {
@@ -678,16 +678,8 @@ video {
   margin-bottom: 0.25rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .mr-3 {
   margin-right: 0.75rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
 }
 
 .block {
@@ -700,10 +692,6 @@ video {
 
 .grid {
   display: grid;
-}
-
-.hidden {
-  display: none;
 }
 
 .h-6 {
@@ -720,6 +708,14 @@ video {
 
 .h-12 {
   height: 3rem;
+}
+
+.max-h-0 {
+  max-height: 0px;
+}
+
+.max-h-56 {
+  max-height: 14rem;
 }
 
 .w-full {
@@ -771,6 +767,10 @@ video {
   justify-self: end;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .bg-indigo-600 {
   --tw-bg-opacity: 1;
   background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
@@ -796,24 +796,14 @@ video {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -849,10 +839,20 @@ video {
   color: rgba(249, 250, 251, var(--tw-text-opacity));
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-colors {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
 }
 
 .duration-200 {
@@ -972,10 +972,6 @@ input {
 }
 
 @media (min-width: 768px) {
-  .md\:mr-8 {
-    margin-right: 2rem;
-  }
-
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -992,17 +988,16 @@ input {
     display: none;
   }
 
+  .md\:max-h-full {
+    max-height: 100%;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:justify-between {
     justify-content: space-between;
-  }
-
-  .md\:py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
   }
 
   .md\:px-8 {
@@ -1012,10 +1007,6 @@ input {
 
   .md\:text-left {
     text-align: left;
-  }
-
-  .md\:align-middle {
-    vertical-align: middle;
   }
 }
 
