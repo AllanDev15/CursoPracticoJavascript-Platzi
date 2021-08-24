@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  @apply px-4 mx-auto;
+}
+
+section {
+  @apply py-16;
+}
+
+input {
+  @apply border border-gray-400 rounded py-1 pl-2 w-full;
+}
+
+.geometricas .card {
+  @apply bg-white py-6 px-8 rounded-xl flex flex-col;
+}
+.card .card__title {
+  @apply text-center text-lg mb-8 font-bold;
+}
+
+.geometricas button {
+  @apply py-1 px-4 text-white rounded;
+}
+
+@layer utilities {
+  /* .triangle:after {
+    content: '';
+    position: relative;
+    bottom: 12px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 3.5rem solid #6366f1;
+  } */
+  .triangle {
+    /* width: 3.5rem;
+    height: 3.5rem;
+    background-color: #6366f1; */
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  }
+}

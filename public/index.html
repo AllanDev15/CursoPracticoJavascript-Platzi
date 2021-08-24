@@ -10,7 +10,117 @@
 </head>
 
 <body>
-
+  <header class="bg-indigo-600 px-6 md:px-8 py-4 fixed w-full top-0 text-indigo-200 z-10">
+    <div class="md:flex md:justify-between font-semibold">
+      <div class="flex justify-between text-lg text-gray-50">
+        <h1><a href="index.html">Curso practico de JavaScript</a></h1>
+        <div class="md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
+      </div>
+      <nav class="mt-5 md:mt-0">
+        <ul class="md:flex md:justify-between">
+          <li class="mt-4 text-center md:text-left md:mt-0 md:mr-6 lg:mr-8">
+            <a class="hover:underline text-gray-50" href="#geometricas">Figuras Geometricas</a>
+          </li>
+          <li class="mt-4 text-center md:text-left md:mt-0 md:mr-6 lg:mr-8">
+            <a class="hover:underline" href="#descuentos">Precios y Descuentos</a>
+          </li>
+          <li class="mt-4 text-center md:text-left md:mt-0 md:mr-6 lg:mr-8">
+            <a class="hover:underline" href="#operaciones">Promedio Moda y Mediana</a>
+          </li>
+          <li class="mt-4 text-center md:text-left md:mt-0">
+            <a class="hover:underline" href="#analisis">Analisis Salarial</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="mt-14">
+    <section id="geometricas" class="geometricas bg-indigo-100">
+      <div class="container">
+        <h2 class="text-2xl">Figuras Geometricas | Area y Perimetro</h2>
+        <div class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card">
+            <h3 class="card__title">Cuadrado</h3>
+            <form class="form h-full grid grid-cols-2 gap-x-4">
+              <div class="mb-4">
+                <label for="inputLadoCuadrado" class="block mb-1 text-sm">Lado del cuadrado:</label>
+                <input id="inputLadoCuadrado" type="number">
+              </div>
+              <div
+                class="relative justify-self-end top-2 after:h-14 after:w-14 after:border-2 after:border-indigo-400 after:block">
+              </div>
+              <div class="col-span-2 place-self-end mt-4">
+                <button type="button"
+                  class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
+                <button type="button"
+                  class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Triangulo</h3>
+            <form class="form flex-1">
+              <div class="grid grid-cols-2 gap-x-4 h-full">
+                <div>
+                  <div class="mb-4">
+                    <label for="inputLado1Triangulo" class="block mb-1 text-sm">Lado 1 del triangulo:</label>
+                    <input id="inputLado1Triangulo" type="number">
+                  </div>
+                  <div class="mb-4">
+                    <label for="inputLado2Triangulo" class="block mb-1 text-sm">Lado 2 del triangulo:</label>
+                    <input id="inputLado2Triangulo" type="number">
+                  </div>
+                  <div class="mb-4">
+                    <label for="inputBaseTriangulo" class="block mb-1 text-sm">Base del triangulo:</label>
+                    <input id="inputBaseTriangulo" type="number">
+                  </div>
+                </div>
+                <div class="justify-self-end top-2">
+                  <div class="triangle h-14 w-14 bg-indigo-400 relative">
+                    <div class="triangle h-12 w-12 bg-white absolute top-1 left-1"></div>
+                  </div>
+                </div>
+                <div class="col-span-2 place-self-end mt-4">
+                  <button type="button"
+                    class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
+                  <button type="button"
+                    class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Circulo</h3>
+            <form class="grid grid-cols-2 gap-x-4 h-full">
+              <div>
+                <div class="mb-4">
+                  <label for="inputLado1Triangulo" class="block mb-1 text-sm">Radio del circulo:</label>
+                  <input id="inputLado1Triangulo" type="number">
+                </div>
+                <div class="mb-4">
+                  <label for="inputLado2Triangulo" class="block mb-1 text-sm">Perimetro del circulo:</label>
+                  <input id="inputLado2Triangulo" type="number">
+                </div>
+              </div>
+              <div
+                class="circle relative justify-self-end top-2 after:w-14 after:h-14 after:rounded-full after:border-2 after:border-indigo-400 after:block">
+              </div>
+              <div class="col-span-2 place-self-end mt-4">
+                <button type="button"
+                  class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
+                <button type="button"
+                  class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
