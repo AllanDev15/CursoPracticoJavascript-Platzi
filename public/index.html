@@ -43,29 +43,32 @@
       <div class="container">
         <h2 class="text-2xl">Figuras Geometricas | Area y Perimetro</h2>
         <div class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="card">
+          <div class="card self-start square py-4 px-6 md:py-6 md:px-8">
             <h3 class="card__title">Cuadrado</h3>
-            <form class="form h-full grid grid-cols-2 gap-x-4">
-              <div class="mb-4">
-                <label for="inputLadoCuadrado" class="block mb-1 text-sm">Lado del cuadrado:</label>
-                <input id="inputLadoCuadrado" type="number">
+            <form class="grid grid-cols-1 items-center gap-y-10 max-h-80 md:h-72">
+              <div class="flex justify-between">
+                <div class="w-1/2">
+                  <label for="inputLadoCuadrado" class="block mb-1 text-sm">Lado del cuadrado:</label>
+                  <input id="inputLadoCuadrado" type="number">
+                  <p class="feedback hidden text-sm text-red-500"></p>
+                </div>
+                <div
+                  class="relative justify-self-end md:top-2 after:h-14 after:w-14 after:border-2 after:border-indigo-400 after:block">
+                </div>
               </div>
-              <div
-                class="relative justify-self-end top-2 after:h-14 after:w-14 after:border-2 after:border-indigo-400 after:block">
-              </div>
-              <div class="col-span-2 place-self-end mt-4">
-                <button type="button"
-                  class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
-                <button type="button"
-                  class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
+              <div class="col-span-2 place-self-end">
+                <button type="button" id="areaCuadrado" data-type="area"
+                  class="mr-3 bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Área</button>
+                <button type="button" id="perimetroCuadrado" data-type="perimetro"
+                  class="bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Perímetro</button>
               </div>
             </form>
           </div>
-          <div class="card">
+          <div class="card self-start triangle py-4 px-6 md:py-6 md:px-8">
             <h3 class="card__title">Triangulo</h3>
-            <form class="form flex-1">
-              <div class="grid grid-cols-2 gap-x-4 h-full">
-                <div>
+            <form class="grid grid-cols-1 items-center gap-y-10 max-h-80 md:h-72">
+              <div class="flex justify-between">
+                <div class="w-1/2">
                   <div class="mb-4">
                     <label for="inputLado1Triangulo" class="block mb-1 text-sm">Lado 1 del triangulo:</label>
                     <input id="inputLado1Triangulo" type="number">
@@ -74,46 +77,56 @@
                     <label for="inputLado2Triangulo" class="block mb-1 text-sm">Lado 2 del triangulo:</label>
                     <input id="inputLado2Triangulo" type="number">
                   </div>
-                  <div class="mb-4">
+                  <div>
                     <label for="inputBaseTriangulo" class="block mb-1 text-sm">Base del triangulo:</label>
                     <input id="inputBaseTriangulo" type="number">
                   </div>
                 </div>
-                <div class="justify-self-end top-2">
-                  <div class="triangle h-14 w-14 bg-indigo-400 relative">
-                    <div class="triangle h-12 w-12 bg-white absolute top-1 left-1"></div>
+                <div class="justify-self-end self-center relative -top-2">
+                  <div class="triangleShape h-14 w-14 bg-indigo-400 relative">
+                    <div class="triangleShape h-12 w-12 bg-white absolute top-1 left-1"></div>
                   </div>
                 </div>
-                <div class="col-span-2 place-self-end mt-4">
-                  <button type="button"
-                    class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
-                  <button type="button"
-                    class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
-                </div>
+              </div>
+              <div class="col-span-2 place-self-end">
+                <button type="button" id="areaTriangulo" data-type="area"
+                  class="mr-3 bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Área</button>
+                <button type="button" id="perimetroTriangulo" data-type="perimetro"
+                  class="bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Perímetro</button>
               </div>
             </form>
           </div>
-          <div class="card">
+          <div class="card circle self-start py-4 px-6 md:py-6 md:px-8">
             <h3 class="card__title">Circulo</h3>
-            <form class="grid grid-cols-2 gap-x-4 h-full">
-              <div>
-                <div class="mb-4">
-                  <label for="inputLado1Triangulo" class="block mb-1 text-sm">Radio del circulo:</label>
-                  <input id="inputLado1Triangulo" type="number">
+            <form class=" max-h-80 grid grid-cols-1 items-center gap-y-10 md:h-72">
+              <div class="flex justify-between">
+                <div class="w-1/2">
+                  <div class="flex flex-wrap gap-4 mb-4">
+                    <div class="mr-6 flex gap-2">
+                      <input class="indigo appearance-none rounded-full" id="inputRadio" type="radio" value="radio"
+                        name="tipo" checked>
+                      <label for="inputRadio" class="block mb-1 text-sm">Radio</label>
+                    </div>
+                    <div class="mr-6 flex gap-2">
+                      <input class="indigo appearance-none rounded-full" id="inputDiametro" type="radio"
+                        value="diametro" name="tipo">
+                      <label for="inputDiametro" class="block mb-1 text-sm h-">Diametro</label>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="inputCirculo" class="block mb-1 text-sm"></label>
+                    <input id="inputCirculo" type="number">
+                  </div>
                 </div>
-                <div class="mb-4">
-                  <label for="inputLado2Triangulo" class="block mb-1 text-sm">Perimetro del circulo:</label>
-                  <input id="inputLado2Triangulo" type="number">
+                <div
+                  class="circle relative justify-self-end top-2 after:w-14 after:h-14 after:rounded-full after:border-2 after:border-indigo-400 after:block">
                 </div>
               </div>
-              <div
-                class="circle relative justify-self-end top-2 after:w-14 after:h-14 after:rounded-full after:border-2 after:border-indigo-400 after:block">
-              </div>
-              <div class="col-span-2 place-self-end mt-4">
-                <button type="button"
-                  class="mr-3 bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Área</button>
-                <button type="button"
-                  class="bg-indigo-500 transition-colors duration-200 hover:bg-indigo-600">Perímetro</button>
+              <div class="col-span-2 place-self-end">
+                <button type="button" id="areaCirculo" data-type="area"
+                  class="mr-3 bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Área</button>
+                <button type="button" id="perimetroCirculo" data-type="perimetro"
+                  class="bg-indigo-600 transition-colors duration-200 hover:bg-indigo-700">Perímetro</button>
               </div>
             </form>
           </div>

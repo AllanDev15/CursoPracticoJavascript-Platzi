@@ -15,7 +15,7 @@ input {
 }
 
 .geometricas .card {
-  @apply bg-white py-6 px-8 rounded-xl flex flex-col;
+  @apply bg-white rounded-xl flex flex-col;
 }
 .card .card__title {
   @apply text-center text-lg mb-8 font-bold;
@@ -26,7 +26,17 @@ input {
 }
 
 @layer utilities {
-  .triangle {
+  .triangleShape {
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  }
+  input[type='radio'] {
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    transition: 200ms box-shadow ease;
+  }
+  input[type='radio'].indigo:checked {
+    box-shadow: inset 0 0 0 3px #ffffff;
+    @apply bg-indigo-500;
   }
 }
