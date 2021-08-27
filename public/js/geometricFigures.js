@@ -64,13 +64,17 @@ function triangulo(e) {
   const tipoCalculo = e.target.dataset.type;
   const contenedor = document.querySelector('.card.triangle');
 
-  if (tipoCalculo == 'area') {
-    const altura = Math.sqrt(lado1Triangulo ** 2 + lado2Triangulo ** 2);
-    const area = ((baseTriangulo * altura) / 2).toFixed(4);
-    mostrarResultado(contenedor, 'triangulo', 'area', area);
-  } else if (tipoCalculo == 'perimetro') {
-    const perimetro = lado1Triangulo + lado2Triangulo + baseTriangulo;
-    mostrarResultado(contenedor, 'triangulo', 'perimetro', perimetro);
+  if (lado1Triangulo != lado2Triangulo) {
+    mostrarMensajeError(contenedor, 'Los 2 lados del triangulo deben ser iguales');
+  } else {
+    if (tipoCalculo == 'area') {
+      const altura = Math.sqrt(lado1Triangulo ** 2 + lado2Triangulo ** 2);
+      const area = ((baseTriangulo * altura) / 2).toFixed(4);
+      mostrarResultado(contenedor, 'triangulo', 'area', area);
+    } else if (tipoCalculo == 'perimetro') {
+      const perimetro = lado1Triangulo + lado2Triangulo + baseTriangulo;
+      mostrarResultado(contenedor, 'triangulo', 'perimetro', perimetro);
+    }
   }
 }
 
@@ -91,8 +95,38 @@ function circulo(e) {
   }
 }
 
+function mostrarMensajeError(contenedor, texto) {
+  const mensaje = contenedor.querySelector('.msg-error');
+
+  if (!mensaje) {
+    const msgContainer = document.createElement('div');
+    const p = document.createElement('p');
+    p.textContent = texto;
+    p.classList.add('text-sm', 'text-red-600');
+
+    msgContainer.className = 'msg-error flex justify-between items-center py-2 px-4 mt-3 rounded bg-red-200 opacity-0 transition-opacity duration-300';
+    msgContainer.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer fill-current text-red-600" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>`;
+    const closeIcon = msgContainer.querySelector('svg');
+    msgContainer.insertBefore(p, closeIcon);
+    contenedor.appendChild(msgContainer);
+
+    setTimeout(() => {
+      msgContainer.classList.remove('opacity-0');
+      msgContainer.classList.add('opacity-100');
+    }, 1);
+  }
+}
+
 function mostrarResultado(contenedor, figura, tipo, resultado) {
   const mensaje = contenedor.querySelector(`div.${tipo}`);
+  const mensajeError = contenedor.querySelector('.msg-error');
+
+  if (mensajeError) {
+    mensajeError.remove();
+  }
 
   if (mensaje) {
     mensaje.querySelector('p').textContent = `El ${tipo} de tu ${figura} es ${resultado}`;
@@ -101,13 +135,13 @@ function mostrarResultado(contenedor, figura, tipo, resultado) {
 
     const p = document.createElement('p');
     p.textContent = `El ${tipo} de tu ${figura} es ${resultado}`;
-    p.classList.add('text-sm');
+    p.classList.add('text-sm', 'text-indigo-600');
 
     resContainer.className = `${tipo} flex justify-between items-center py-2 px-4 mt-3 rounded bg-indigo-200 opacity-0 transition-opacity duration-300`;
     resContainer.innerHTML = `
-  <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>`;
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer fill-current text-indigo-600" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>`;
     const closeIcon = resContainer.querySelector('svg');
     resContainer.insertBefore(p, closeIcon);
     contenedor.appendChild(resContainer);
