@@ -50,10 +50,12 @@ function cuadrado(e) {
 
   if (tipoCalculo == 'area') {
     const area = lado * lado;
-    mostrarResultado(squareCard, 'cuadrado', tipoCalculo, area);
+    const msg = `El area del cuadrado es ${area}`;
+    mostrarMensaje(squareCard, 'res', tipoCalculo, msg, 'indigo');
   } else if (tipoCalculo == 'perimetro') {
     const perimetro = lado * 4;
-    mostrarResultado(squareCard, 'cuadrado', tipoCalculo, perimetro);
+    const msg = `El perimetro del cuadrado es ${perimetro}`;
+    mostrarMensaje(squareCard, 'res', tipoCalculo, msg, 'indigo');
   }
 }
 
@@ -65,15 +67,18 @@ function triangulo(e) {
   const contenedor = document.querySelector('.card.triangle');
 
   if (lado1Triangulo != lado2Triangulo) {
-    mostrarMensajeError(contenedor, 'Los 2 lados del triangulo deben ser iguales');
+    // mostrarMensajeError(contenedor, 'Los 2 lados del triangulo deben ser iguales');
+    mostrarMensaje(contenedor, 'error', 'error', 'Los 2 lados del triangulo deben ser iguales', 'red');
   } else {
     if (tipoCalculo == 'area') {
       const altura = Math.sqrt(lado1Triangulo ** 2 + lado2Triangulo ** 2);
       const area = ((baseTriangulo * altura) / 2).toFixed(4);
-      mostrarResultado(contenedor, 'triangulo', 'area', area);
+      const msg = `El area del triangulo es ${area}`;
+      mostrarMensaje(contenedor, 'res', 'area', msg, 'indigo');
     } else if (tipoCalculo == 'perimetro') {
       const perimetro = lado1Triangulo + lado2Triangulo + baseTriangulo;
-      mostrarResultado(contenedor, 'triangulo', 'perimetro', perimetro);
+      const msg = `El perimetro del triangulo es ${perimetro}`;
+      mostrarMensaje(contenedor, 'res', 'perimetro', msg, 'indigo');
     }
   }
 }
@@ -87,59 +92,54 @@ function circulo(e) {
   if (tipoCalculo == 'area') {
     let area;
     valor == 'radio' ? (area = (Math.PI * inputCirculo ** 2).toFixed(4)) : (area = (Math.PI * (inputCirculo / 2) ** 2).toFixed(4));
-    mostrarResultado(contenedor, 'circulo', 'area', area);
+    const msg = `El area del circulo es ${area}`;
+    mostrarMensaje(contenedor, 'res', 'area', msg, 'indigo');
   } else if (tipoCalculo == 'perimetro') {
     let perimetro;
     valor == 'radio' ? (perimetro = (Math.PI * (inputCirculo * 2)).toFixed(4)) : (perimetro = (Math.PI * inputCirculo).toFixed(4));
-    mostrarResultado(contenedor, 'circulo', 'perimetro', perimetro);
+    const msg = `El perimetro del criculo es ${perimetro}`;
+    mostrarMensaje(contenedor, 'res', 'perimetro', msg, 'indigo');
   }
 }
 
-function mostrarMensajeError(contenedor, texto) {
-  const mensaje = contenedor.querySelector('.msg-error');
+function mostrarMensaje(contenedor, tipoMsg, tipoData, msg, color) {
+  const colors = {
+    green: ['text-green-600', 'bg-green-200'],
+    blue: ['text-blue-600', 'bg-blue-200'],
+    red: ['text-red-600', 'bg-red-200'],
+    indigo: ['text-indigo-600', 'bg-indigo-200'],
+  };
 
-  if (!mensaje) {
-    const msgContainer = document.createElement('div');
-    const p = document.createElement('p');
-    p.textContent = texto;
-    p.classList.add('text-sm', 'text-red-600');
+  let textColor = colors[color][0];
+  let bgColor = colors[color][1];
 
-    msgContainer.className = 'msg-error flex justify-between items-center py-2 px-4 mt-3 rounded bg-red-200 opacity-0 transition-opacity duration-300';
-    msgContainer.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer fill-current text-red-600" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>`;
-    const closeIcon = msgContainer.querySelector('svg');
-    msgContainer.insertBefore(p, closeIcon);
-    contenedor.appendChild(msgContainer);
+  const mensaje = contenedor.querySelector(`.res-${tipoData}-msg`);
+  const mensajeError = contenedor.querySelector('.res-error-msg');
+  let resContainer;
+  let p;
 
-    setTimeout(() => {
-      msgContainer.classList.remove('opacity-0');
-      msgContainer.classList.add('opacity-100');
-    }, 1);
-  }
-}
-
-function mostrarResultado(contenedor, figura, tipo, resultado) {
-  const mensaje = contenedor.querySelector(`div.${tipo}`);
-  const mensajeError = contenedor.querySelector('.msg-error');
-
-  if (mensajeError) {
-    mensajeError.remove();
+  if (tipoMsg === 'error') {
+    if (mensajeError) {
+      mensajeError.textContent = msg;
+    }
+  } else {
+    if (mensajeError) {
+      mensajeError.remove();
+    }
   }
 
   if (mensaje) {
-    mensaje.querySelector('p').textContent = `El ${tipo} de tu ${figura} es ${resultado}`;
+    mensaje.querySelector('p').textContent = msg;
   } else {
-    const resContainer = document.createElement('div');
+    resContainer = document.createElement('div');
 
-    const p = document.createElement('p');
-    p.textContent = `El ${tipo} de tu ${figura} es ${resultado}`;
-    p.classList.add('text-sm', 'text-indigo-600');
+    p = document.createElement('p');
+    p.textContent = msg;
+    p.classList.add('text-sm', textColor);
 
-    resContainer.className = `${tipo} flex justify-between items-center py-2 px-4 mt-3 rounded bg-indigo-200 opacity-0 transition-opacity duration-300`;
+    resContainer.className = `res-${tipoData}-msg ${tipoMsg}-msg flex justify-between items-center py-2 px-4 mt-3 rounded ${bgColor} opacity-0 transition-opacity duration-300`;
     resContainer.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer fill-current text-indigo-600" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" class="closeRes h-4 w-4 cursor-pointer fill-current ${textColor}" onclick="eliminarResultado(event)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path class="pointer-events-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
     </svg>`;
     const closeIcon = resContainer.querySelector('svg');
