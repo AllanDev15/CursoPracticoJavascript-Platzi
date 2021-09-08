@@ -133,9 +133,33 @@
         </div>
       </div>
     </section>
+    <section class="bg-blue-100">
+      <div class="container">
+        <h2 class="text-2xl">Precios y Descuentos</h2>
+        <div class="flex self-start">
+          <div class="card discount mt-6 bg-white rounded-xl py-4 px-6 md:py-6 md:px-8 w-4/12">
+            <form class="flex flex-col gap-6">
+              <div>
+                <p id="precio" class="text-xl text-center"></p>
+              </div>
+              <div>
+                <label class="block mb-1" for="inputCupon">Ingresa tu cupon:</label>
+                <input id="inputCupon" type="text">
+              </div>
+              <div class="flex justify-between">
+                <button id="btnMostrarCupones" class="p-0 text-blue-600 hover:cursor-pointer hover:underline"
+                  type="button">Mostrar cupones</button>
+                <button id="btnDescuento" class="bg-blue-600 hover:bg-blue-700" type="button">Calcular</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="js/geometricFigures.js"></script>
+  <script src="js/discount.js"></script>
 </body>
 
 </html>

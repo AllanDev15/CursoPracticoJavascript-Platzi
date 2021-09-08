@@ -21,7 +21,7 @@ input {
   @apply text-center text-lg mb-8 font-bold;
 }
 
-.geometricas button {
+button {
   @apply py-1 px-4 text-white rounded;
 }
 
